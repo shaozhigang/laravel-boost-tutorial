@@ -7,11 +7,23 @@ use App\Http\Requests\UpdatePostRequest;
 use App\Models\Post;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\View\View;
 
-class PostController extends Controller
+class PostController extends Controller implements HasMiddleware
 {
     use AuthorizesRequests;
+
+    /**
+     * Require authentication for all actions except public reads.
+     */
+    public static function middleware(): array
+    {
+        return [
+            new Middleware('auth', except: ['index', 'show']),
+        ];
+    }
 
     /**
      * Public list of published posts.
