@@ -48,4 +48,20 @@ class Post extends Model
             ->whereNotNull('published_at')
             ->where('published_at', '<=', now());
     }
+
+    /**
+     * Posts that have not been published yet (no publish date set).
+     */
+    public function scopeDraft(Builder $query): Builder
+    {
+        return $query->whereNull('published_at');
+    }
+
+    /**
+     * Posts scheduled to be published in the future.
+     */
+    public function scopeScheduled(Builder $query): Builder
+    {
+        return $query->where('published_at', '>', now());
+    }
 }
