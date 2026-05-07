@@ -38,4 +38,14 @@ class Post extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    /**
+     * Posts whose published_at is set and not in the future.
+     */
+    public function scopePublished(Builder $query): Builder
+    {
+        return $query
+            ->whereNotNull('published_at')
+            ->where('published_at', '<=', now());
+    }
 }
