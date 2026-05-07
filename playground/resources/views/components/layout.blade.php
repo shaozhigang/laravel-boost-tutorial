@@ -25,6 +25,10 @@
                 </a>
 
                 @auth
+                    <a href="{{ route('posts.mine') }}"
+                       class="text-gray-600 hover:text-gray-900 {{ request()->routeIs('posts.mine') ? 'font-medium text-gray-900' : '' }}">
+                        My Posts
+                    </a>
                     <a href="{{ route('posts.create') }}"
                        class="rounded-md bg-gray-900 px-3 py-1.5 text-white hover:bg-gray-700">
                         New Post

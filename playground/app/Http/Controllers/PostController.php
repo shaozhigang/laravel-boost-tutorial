@@ -7,6 +7,7 @@ use App\Http\Requests\UpdatePostRequest;
 use App\Models\Post;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\View\View;
@@ -23,6 +24,20 @@ class PostController extends Controller implements HasMiddleware
         return [
             new Middleware('auth', except: ['index', 'show']),
         ];
+    }
+
+    /**
+     * Posts authored by the current user, grouped by state.
+     */
+    public function mine(Request $request): View
+    {
+        $user = $request->user();
+
+        return view('posts.mine', [
+            'published' => $user->posts()->published()->latest('published_at')->get(),
+            'drafts'    => $user->posts()->draft()->latest('updated_at')->get(),
+            'scheduled' => $user->posts()->scheduled()->orderBy('published_at')->get(),
+        ]);
     }
 
     /**
