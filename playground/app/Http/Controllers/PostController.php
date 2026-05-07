@@ -13,16 +13,13 @@ class PostController extends Controller
 {
     use AuthorizesRequests;
 
-    public function __construct()
-    {
-        $this->authorizeResource(Post::class, 'post');
-    }
-
     /**
      * Public list of published posts.
      */
     public function index(): View
     {
+        $this->authorize('viewAny', Post::class);
+
         $posts = Post::published()
             ->with('author')
             ->latest('published_at')
@@ -33,11 +30,15 @@ class PostController extends Controller
 
     public function create(): View
     {
+        $this->authorize('create', Post::class);
+
         return view('posts.create');
     }
 
     public function store(StorePostRequest $request): RedirectResponse
     {
+        $this->authorize('create', Post::class);
+
         $post = $request->user()->posts()->create($request->validated());
 
         return redirect()
@@ -47,6 +48,8 @@ class PostController extends Controller
 
     public function show(Post $post): View
     {
+        $this->authorize('view', $post);
+
         $post->loadMissing('author');
 
         return view('posts.show', compact('post'));
@@ -54,11 +57,15 @@ class PostController extends Controller
 
     public function edit(Post $post): View
     {
+        $this->authorize('update', $post);
+
         return view('posts.edit', compact('post'));
     }
 
     public function update(UpdatePostRequest $request, Post $post): RedirectResponse
     {
+        $this->authorize('update', $post);
+
         $post->update($request->validated());
 
         return redirect()
@@ -68,6 +75,8 @@ class PostController extends Controller
 
     public function destroy(Post $post): RedirectResponse
     {
+        $this->authorize('delete', $post);
+
         $post->delete();
 
         return redirect()
