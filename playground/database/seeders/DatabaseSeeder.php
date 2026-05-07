@@ -16,18 +16,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $testUser = User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        $testUser = User::firstOrCreate(
+            ['email' => 'test@example.com'],
+            User::factory()->raw(['name' => 'Test User', 'email' => 'test@example.com'])
+        );
 
-        Post::factory()->count(3)->for($testUser, 'author')->create();
-        Post::factory()->draft()->for($testUser, 'author')->create();
-        Post::factory()->scheduled()->for($testUser, 'author')->create();
+        if ($testUser->wasRecentlyCreated) {
+            Post::factory()->count(3)->for($testUser, 'author')->create();
+            Post::factory()->draft()->for($testUser, 'author')->create();
+            Post::factory()->scheduled()->for($testUser, 'author')->create();
 
-        User::factory()
-            ->count(5)
-            ->has(Post::factory()->count(3), 'posts')
-            ->create();
+            User::factory()
+                ->count(5)
+                ->has(Post::factory()->count(3), 'posts')
+                ->create();
+        }
     }
 }
