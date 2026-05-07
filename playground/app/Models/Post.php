@@ -34,6 +34,14 @@ class Post extends Model
         ];
     }
 
+    /**
+     * Use slug instead of id for route model binding.
+     */
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
+
     public function author(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
