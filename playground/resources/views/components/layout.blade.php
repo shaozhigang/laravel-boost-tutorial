@@ -23,10 +23,26 @@
                    class="text-gray-600 hover:text-gray-900 {{ request()->routeIs('posts.index') ? 'font-medium text-gray-900' : '' }}">
                     Posts
                 </a>
-                <a href="{{ route('posts.create') }}"
-                   class="rounded-md bg-gray-900 px-3 py-1.5 text-white hover:bg-gray-700">
-                    New Post
-                </a>
+
+                @auth
+                    <a href="{{ route('posts.create') }}"
+                       class="rounded-md bg-gray-900 px-3 py-1.5 text-white hover:bg-gray-700">
+                        New Post
+                    </a>
+                    <span class="text-gray-500">Logged in as <span class="font-medium text-gray-900">{{ auth()->user()->name }}</span></span>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit"
+                                class="rounded-md border border-gray-300 px-3 py-1.5 text-gray-700 hover:bg-gray-100">
+                            Logout
+                        </button>
+                    </form>
+                @else
+                    <a href="{{ route('login') }}"
+                       class="rounded-md bg-gray-900 px-3 py-1.5 text-white hover:bg-gray-700">
+                        Login
+                    </a>
+                @endauth
             </div>
         </nav>
     </header>
