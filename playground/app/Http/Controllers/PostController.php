@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use App\Jobs\SendPostPublishedEmailJob;
 use App\Models\Post;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\RedirectResponse;
@@ -67,6 +68,10 @@ class PostController extends Controller implements HasMiddleware
         $this->authorize('create', Post::class);
 
         $post = $request->user()->posts()->create($request->validated());
+
+        if ($post->published_at?->isPast()) {
+            SendPostPublishedEmailJob::dispatch($post);
+        }
 
         return redirect()
             ->route('posts.show', $post)
