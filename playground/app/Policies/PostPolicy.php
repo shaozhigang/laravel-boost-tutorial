@@ -8,6 +8,19 @@ use App\Models\User;
 class PostPolicy
 {
     /**
+     * Admins bypass all policy checks (Filament backend / web / API alike).
+     * Returning null lets specific methods continue to evaluate.
+     */
+    public function before(?User $user, string $ability): ?bool
+    {
+        if ($user?->is_admin === true) {
+            return true;
+        }
+
+        return null;
+    }
+
+    /**
      * Anyone (including guests) can view the public list.
      */
     public function viewAny(?User $user): bool

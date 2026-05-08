@@ -21,6 +21,10 @@ class DatabaseSeeder extends Seeder
             User::factory()->raw(['name' => 'Test User', 'email' => 'test@example.com'])
         );
 
+        if (! $testUser->is_admin) {
+            $testUser->forceFill(['is_admin' => true])->save();
+        }
+
         if ($testUser->wasRecentlyCreated) {
             Post::factory()->count(3)->for($testUser, 'author')->create();
             Post::factory()->draft()->for($testUser, 'author')->create();
