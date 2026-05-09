@@ -13,7 +13,8 @@ export default defineConfig({
   cleanUrls: true,
 
   head: [
-    ['meta', { name: 'theme-color', content: '#3c8772' }],
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/laravel-boost-tutorial/favicon.svg' }],
+    ['meta', { name: 'theme-color', content: '#FF2D20' }],
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:locale', content: 'zh-CN' }],
     ['meta', { property: 'og:title', content: 'Laravel Boost 中文教程' }],
