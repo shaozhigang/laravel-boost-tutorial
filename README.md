@@ -1,6 +1,20 @@
 # Laravel Boost 中文教程 · 从 ThinkPHP 老手视角
 
+[![Deploy](https://github.com/shaozhigang/laravel-boost-tutorial/actions/workflows/deploy.yml/badge.svg)](https://github.com/shaozhigang/laravel-boost-tutorial/actions/workflows/deploy.yml)
+[![Site](https://img.shields.io/badge/site-online-brightgreen?logo=github)](https://shaozhigang.github.io/laravel-boost-tutorial/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/shaozhigang/laravel-boost-tutorial?style=social)](https://github.com/shaozhigang/laravel-boost-tutorial)
+
+[![Laravel](https://img.shields.io/badge/Laravel-12.58-FF2D20?logo=laravel&logoColor=white)](https://laravel.com)
+[![PHP](https://img.shields.io/badge/PHP-8.2%2B-777BB4?logo=php&logoColor=white)](https://www.php.net)
+[![Laravel Boost](https://img.shields.io/badge/laravel%2Fboost-2.4.6-orange)](https://github.com/laravel/boost)
+[![Pest](https://img.shields.io/badge/Pest-3.8-A30000?logo=pest)](https://pestphp.com)
+[![Filament](https://img.shields.io/badge/Filament-5.6-FDAE4B?logo=filament)](https://filamentphp.com)
+[![Tests](https://img.shields.io/badge/tests-31%20passed-success)](./playground/tests)
+
 > 一份**实测过、能跑通**的 Laravel Boost 入门到精通教程，配套一个 2 小时搭起来的 Laravel 12 博客实战项目（31 个 Pest 测试 passed）。
+>
+> 📖 **在线阅读**：https://shaozhigang.github.io/laravel-boost-tutorial/
 
 **适合谁读**：
 
