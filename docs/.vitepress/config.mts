@@ -15,10 +15,22 @@ export default defineConfig({
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/laravel-boost-tutorial/favicon.svg' }],
     ['meta', { name: 'theme-color', content: '#FF2D20' }],
+
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:locale', content: 'zh-CN' }],
     ['meta', { property: 'og:title', content: 'Laravel Boost 中文教程' }],
     ['meta', { property: 'og:site_name', content: 'Laravel Boost 中文教程' }],
+    ['meta', { property: 'og:description', content: '从 ThinkPHP 老手视角的 Laravel Boost 实测笔记 · 12 篇文档 · 约 40 万字 · 配套 Laravel 12 实战项目' }],
+    ['meta', { property: 'og:url', content: 'https://shaozhigang.github.io/laravel-boost-tutorial/' }],
+    ['meta', { property: 'og:image', content: 'https://shaozhigang.github.io/laravel-boost-tutorial/og-image.jpg' }],
+    ['meta', { property: 'og:image:width', content: '1200' }],
+    ['meta', { property: 'og:image:height', content: '630' }],
+    ['meta', { property: 'og:image:alt', content: 'Laravel Boost 中文教程封面' }],
+
+    ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
+    ['meta', { name: 'twitter:title', content: 'Laravel Boost 中文教程' }],
+    ['meta', { name: 'twitter:description', content: '从 ThinkPHP 老手视角的 Laravel Boost 实测笔记' }],
+    ['meta', { name: 'twitter:image', content: 'https://shaozhigang.github.io/laravel-boost-tutorial/og-image.jpg' }],
   ],
 
   markdown: {
