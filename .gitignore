@@ -1,0 +1,48 @@
+# IDE / 编辑器
+.idea/
+.vscode/
+.fleet/
+.nova/
+.zed/
+*.swp
+*.swo
+
+# 操作系统
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Office / 文本编辑器临时文件
+~$*
+*.tmp
+
+# 仓库重写时的本地备份（方案 B 操作残留）
+playground/.git.backup/
+
+# Laravel 实战项目额外排除（playground/.gitignore 已覆盖大部分）
+# 这里再排除一遍是双保险，避免误提交
+playground/.env
+playground/.env.backup
+playground/.env.production
+playground/database/database.sqlite
+playground/database/database.sqlite-journal
+playground/storage/logs/*.log
+playground/storage/framework/cache/data/*
+playground/storage/framework/sessions/*
+playground/storage/framework/views/*
+!playground/storage/framework/cache/data/.gitkeep
+!playground/storage/framework/sessions/.gitkeep
+!playground/storage/framework/views/.gitkeep
+
+# AI 工具运行时缓存（保留配置文件 .cursor/mcp.json、playground/boost.json 等）
+.cursor/agent-cache/
+.cursor/logs/
+
+# Node / 前端构建产物（playground 下已被它自己的 .gitignore 处理）
+node_modules/
+
+# 文档构建产物（如果未来加 VitePress / Docusaurus）
+docs/.vitepress/cache/
+docs/.vitepress/dist/
+site/dist/

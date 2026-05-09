@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "laravel-boost": {
+      "command": "php",
+      "args": [
+        "D:/workspace/cursor/laravel-boost/playground/artisan",
+        "boost:mcp"
+      ]
+    }
+  }
+}
